@@ -33,6 +33,10 @@ const LOCAL_STRORAGE_KEY = 'cookingWithReact.recipes'
 function App(){
   const [recipes, setRecipes] = useState(sampleRecipes)
 
+  const [selectRecipeId, setSelectRecipeId] = useState()
+
+  const selectedRecipe = recipes.find(recipe => recipe.id === selectRecipeId)
+
   useEffect( () =>{
     const recipeJSON = localStorage.getItem(LOCAL_STRORAGE_KEY)
     if(recipeJSON != null) setRecipes(JSON.parse(recipeJSON))
@@ -45,7 +49,12 @@ function App(){
 
   const handleRecipeValue = {
     handleRecipeAdd,
-    handleRecipeDelete
+    handleRecipeDelete,
+    handleRecipeSelect
+  }
+
+  function handleRecipeSelect(id) {
+      setSelectRecipeId(id)
   }
   
   function handleRecipeAdd(){
@@ -72,7 +81,7 @@ function App(){
     <>
       <RecipeContext.Provider value={handleRecipeValue}>
         <RecipeList recipes={recipes} />
-        <RecipeEdit/>
+        { selectedRecipe && <RecipeEdit recipe={selectedRecipe}/>}
       </RecipeContext.Provider>
     </>
   )

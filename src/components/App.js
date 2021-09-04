@@ -25,6 +25,7 @@ import React , { useState,  useEffect } from 'react'
 import RecipeList from './RecipeList'
 import '../css/app.css'
 import { v4 as uuidv4 } from 'uuid'
+import RecipeEdit from './RecipeEdit'
 
 export const RecipeContext = React.createContext()
 const LOCAL_STRORAGE_KEY = 'cookingWithReact.recipes'
@@ -68,9 +69,12 @@ function App(){
   }
 
   return (
-    <RecipeContext.Provider value={handleRecipeValue}>
-      <RecipeList recipes={recipes} />
-    </RecipeContext.Provider>
+    <>
+      <RecipeContext.Provider value={handleRecipeValue}>
+        <RecipeList recipes={recipes} />
+        <RecipeEdit/>
+      </RecipeContext.Provider>
+    </>
   )
   
 }

@@ -1,4 +1,4 @@
-.btn{
+.btn {
     background: none;
     border: none;
     outline: none;
@@ -9,7 +9,7 @@
     cursor: pointer;
 }
 
-.btn--primary{
+.btn--primary {
     color: white;
     background-color: hsl(200, 100%, 50%);
 }
@@ -18,7 +18,7 @@
     background-color: hsl(200, 100%, 35%);
 }
 
-.btn--danger{
+.btn--danger {
     color: white;
     background-color: hsl(0, 100%, 50%);
 }
